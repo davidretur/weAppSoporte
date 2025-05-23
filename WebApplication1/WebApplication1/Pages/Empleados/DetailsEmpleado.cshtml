@@ -1,0 +1,40 @@
+﻿@page
+@model WebAppInventarioS.Pages.Empleados.DetailsEmpleadoModel
+@{
+	ViewData["Title"] = "Detalle de empleado";
+}
+<h1>Empleado</h1>
+
+@if (Model.Empleado != null)
+{
+	<dl class="row">
+		<dt class="col-sm-2">Nombre</dt>
+		<dd class="col-sm-10">@Model.Empleado.Nombre</dd>
+		<dt class="col-sm-2">Apellido Paterno</dt>
+		<dd class="col-sm-10">@Model.Empleado.ApellidoP</dd>
+		<dt class="col-sm-2">Apellido Materno</dt>
+		<dd class="col-sm-10">@Model.Empleado.ApellidoM</dd>
+		<dt class="col-sm-2">Puesto</dt>
+		<dd class="col-sm-10">@Model.Empleado.Puesto</dd>
+		<dt class="col-sm-2">Departamento</dt>
+		<dd class="col-sm-10">
+			@{
+				var departamento = Model.Departamentos.FirstOrDefault(d => d.Value == Model.Empleado.IdDepartamento.ToString());
+			}
+			@(departamento != null ? departamento.Text : "No asignado")
+		</dd>
+		<dt class="col-sm-2">Ubicación</dt>
+		<dd class="col-sm-10">
+			@{
+				var ubicacion = Model.Ubicaciones.FirstOrDefault(u => u.Value == Model.Empleado.IdUbicacion.ToString());
+			}
+			@(ubicacion != null ? ubicacion.Text : "No asignado")
+		</dd>
+	</dl>
+	<a asp-page="./Edit" asp-route-id="@Model.Empleado.IdEmpleado" class="btn btn-primary">Editar</a>
+	<a asp-page="./Index" class="btn btn-secondary">Regresar a Lista</a>
+}
+else
+{
+	<p>Empleado no encontrado</p>
+}

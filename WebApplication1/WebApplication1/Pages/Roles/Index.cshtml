@@ -1,0 +1,36 @@
+﻿@page
+@model WebAppInventarioS.Pages.Roles.IndexModel
+@{
+	ViewData["Title"] = "Lista Roles";
+}
+
+<h1>Roles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Status</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rol in Model.Roles)
+        {
+            <tr>
+                <td>@rol.NombreRol</td>
+                <td>@rol.Status</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@rol.IdRol">Detalles</a> |
+                    <a asp-page="./Edit" asp-route-id="@rol.IdRol">Editar</a> |
+                    <a asp-page="./Delete" asp-route-id="@rol.IdRol">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Create">Crear Nuevo Rol</a>
+</p>
+

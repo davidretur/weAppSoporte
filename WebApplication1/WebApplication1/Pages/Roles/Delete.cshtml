@@ -1,0 +1,30 @@
+﻿@page
+@model WebAppInventarioS.Pages.Roles.DeleteModel
+@{
+    ViewData["Title"] = "Baja Rol";
+}
+
+<h1>Baja Rol</h1>
+
+<h3>¿Estás seguro de que deseas dar de baja este Rol?</h3>
+
+@if (Model.Rol != null)
+{
+    <dl class="row">
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.Rol.NombreRol</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.Rol.Status</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Rol.IdRol" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+}
+else
+{
+    <p>Rol No encontrado</p>
+}
+

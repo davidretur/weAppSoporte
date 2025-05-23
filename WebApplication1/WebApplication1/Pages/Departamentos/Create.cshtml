@@ -1,0 +1,22 @@
+﻿@page
+@model WebAppInventarioS.Pages.Departamentos.CreateModel
+@{
+	ViewData["Title"] = "Crear Departamento";
+}
+<h1>Crear Departamento</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Departamento.NombreDepartamento"></label>
+        <input asp-for="Departamento.NombreDepartamento" class="form-control" />
+        <span asp-validation-for="Departamento.NombreDepartamento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <br />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

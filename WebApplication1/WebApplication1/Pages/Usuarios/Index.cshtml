@@ -1,0 +1,34 @@
+﻿@page
+@model WebAppInventarioS.Pages.Usuarios.IndexModel
+@{
+	ViewData["Title"] = "Lista Usuario";
+}
+<h1>Lista de Usuarios</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuario Sesion</th>
+            <th>IdRol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model.Usuarios)
+        {
+            <tr>
+                <td>@usuario.UsuarioSesion</td>
+                <td>@usuario.IdRol</td>
+                <td>@usuario.Status</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@usuario.IdUsuario">Detalles</a> |
+                    <a asp-page="./Edit" asp-route-id="@usuario.IdUsuario">Editar</a> |
+                    <a asp-page="./Delete" asp-route-id="@usuario.IdUsuario">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Create">Crear Nuevo Empleado</a>
+</p>

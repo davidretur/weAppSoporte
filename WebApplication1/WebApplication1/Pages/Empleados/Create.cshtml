@@ -1,0 +1,76 @@
+﻿@page
+@model WebAppInventarioS.Pages.Empleados.CreateModel
+@{
+	ViewData["Title"] = "Crear Empleado";
+}
+<h1>Crear Empleado</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Empleado.Nombre"></label>
+        <input asp-for="Empleado.Nombre" class="form-control" />
+        <span asp-validation-for="Empleado.Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.ApellidoP"></label>
+        <input asp-for="Empleado.ApellidoP" class="form-control" />
+        <span asp-validation-for="Empleado.ApellidoP" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.ApellidoM"></label>
+        <input asp-for="Empleado.ApellidoM" class="form-control" />
+        <span asp-validation-for="Empleado.ApellidoM" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.Puesto"></label>
+        <input asp-for="Empleado.Puesto" class="form-control" />
+        <span asp-validation-for="Empleado.Puesto" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.UsuarioWindows"></label>
+        <input asp-for="Empleado.UsuarioWindows" class="form-control" />
+        <span asp-validation-for="Empleado.UsuarioWindows" class="text-danger"></span>
+	</div>
+    <div class="form-group">
+        <label asp-for="Empleado.UsuarioAD"></label>
+        <input asp-for="Empleado.UsuarioAD" class="form-control" />
+        <span asp-validation-for="Empleado.UsuarioAD" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.Correo"></label>
+        <input asp-for="Empleado.Correo" class="form-control" />
+		<span asp-validation-for="Empleado.Correo" class="text-danger"></span>
+	</div>
+    <div class="form-group">
+        <label asp-for="Empleado.Pass"></label>
+        <input asp-for="Empleado.Pass" class="form-control" />
+		<span asp-validation-for="Empleado.Pass" class="text-danger"></span>
+	</div>
+    <div class="form-group">
+        <label asp-for="Empleado.Acceso"></label>
+		<input asp-for="Empleado.Acceso" class="form-control" />
+		<span asp-validation-for="Empleado.Acceso" class="text-danger"></span>
+	</div>
+    <div class="form-group">
+        <label asp-for="Empleado.IdDepartamento"></label>
+        <select asp-for="Empleado.IdDepartamento" class="form-control" asp-items="Model.Departamentos">
+            <option value="">Seleccione un departamento</option>
+        </select>
+        <span asp-validation-for="Empleado.IdDepartamento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Empleado.IdUbicacion"></label>
+        <select asp-for="Empleado.IdUbicacion" class="form-control" asp-items="Model.Ubicaciones">
+            <option value="">Seleccione una ubicación</option>
+        </select>
+        <span asp-validation-for="Empleado.IdUbicacion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <br />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

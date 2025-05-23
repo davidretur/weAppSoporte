@@ -1,0 +1,39 @@
+﻿@page
+@model WebAppInventarioS.Pages.Ubicaciones.EditModel
+@{
+    ViewData["Title"] = "Editar Ubicacion";
+}
+<h1>Editar Ubicacion</h1>
+<form method="post">
+    <input type="hidden" asp-for="Ubicacion.IdUbicacion" />
+    <div class="form-group">
+        <label asp-for="Ubicacion.Zona"></label>
+        <input asp-for="Ubicacion.Zona" class="form-control" />
+        <span asp-validation-for="Ubicacion.Zona" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ubicacion.Region"></label>
+        <input asp-for="Ubicacion.Region" class="form-control" />
+        <span asp-validation-for="Ubicacion.Region" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ubicacion.Centro"></label>
+        <input asp-for="Ubicacion.Centro" class="form-control" />
+        <span asp-validation-for="Ubicacion.Centro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ubicacion.Estado"></label>
+        <input asp-for="Ubicacion.Estado" class="form-control" />
+        <span asp-validation-for="Ubicacion.Estado" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ubicacion.Sucursal"></label>
+        <input asp-for="Ubicacion.Sucursal" class="form-control" />
+        <span asp-validation-for="Ubicacion.Sucursal" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,52 @@
+﻿@page
+@model WebAppInventarioS.Pages.Empleados.IndexModel
+@{
+	ViewData["Title"] = "Lista de Empleado";
+}
+<h1>Empleados</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Puesto</th>
+			<th>Usuario Windows</th>
+			<th>Usuario AD</th>
+			<th>Correo</th>
+			<th>Pass</th>
+            <th>Departamento</th>
+            <th>Ubicacion</th>
+			<th>Status</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model.empleados)
+        {
+            <tr>
+                <td>@empleado.Nombre</td>
+                <td>@empleado.ApellidoP</td>
+                <td>@empleado.ApellidoM</td>
+                <td>@empleado.Puesto</td>
+				<td>@empleado.UsuarioWindows</td>
+				<td>@empleado.UsuarioAD</td>
+				<td>@empleado.Correo</td>
+				<td>@empleado.Pass</td>
+                <td>@empleado.NombreDepartamento</td>
+                <td>@empleado.NombreUbicacion</td>
+                <td>@empleado.Status</td>
+                <td>
+                    <a asp-page="./DetailsEmpleado" asp-route-id="@empleado.IdEmpleado">Detalles</a> |
+                    <a asp-page="./Edit" asp-route-id="@empleado.IdEmpleado">Editar</a> |
+                    <a asp-page="./DeleteEmpleado" asp-route-id="@empleado.IdEmpleado">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Create">Crear Nuevo Empleado</a>
+</p>

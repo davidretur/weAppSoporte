@@ -1,0 +1,22 @@
+﻿@page
+@model WebAppInventarioS.Pages.Roles.DetailsModel
+@{
+	ViewData["Title"] = "Rol Detalle";
+}
+<h1>Article Details</h1>
+
+@if (Model.Rol != null)
+{
+	<dl class="row">
+		<dt class="col-sm-2">Nombre</dt>
+		<dd class="col-sm-10">@Model.Rol.NombreRol</dd>
+		<dt class="col-sm-2">Status</dt>
+		<dd class="col-sm-10">@Model.Rol.Status</dd>
+	</dl>
+	<a asp-page="./Edit" asp-route-id="@Model.Rol.IdRol" class="btn btn-primary">Editar</a>
+	<a asp-page="./Index" class="btn btn-secondary">Regresar a Lista</a>
+}
+else
+{
+	<p>Rol no encontrado</p>
+}

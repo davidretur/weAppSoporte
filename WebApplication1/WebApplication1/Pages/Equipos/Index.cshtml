@@ -1,0 +1,137 @@
+﻿@page
+@model WebAppInventarioS.Pages.Equipos.IndexModel
+@{
+    ViewData["Title"] = "Lista de Equipos";
+}
+
+<h1>Lista de Equipos</h1>
+
+<form method="get" class="mb-3 w-50 mx-auto">
+    <div class="input-group">
+        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Buscar por Número de Serie, Etiqueta" />
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+{
+    <h2>Datos Básicos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NumeroSerie</th>
+                <th>Etiqueta</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ip</th>
+                <th>EquipoEstatus</th>
+                <th>Empresa</th>
+                <th>Renovar</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equipo in Model.Equipos)
+            {
+                <tr>
+                    <td>@equipo.NumeroSerie</td>
+                    <td>@equipo.Etiqueta</td>
+                    <td>@equipo.Marca</td>
+                    <td>@equipo.Modelo</td>
+                    <td>@equipo.Ip</td>
+                    <td>@equipo.EquipoEstatus</td>
+                    <td>@equipo.Empresa</td>
+                    <td>@equipo.Renovar</td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@equipo.IdEquipo">Detalles</a> |
+                        <a asp-page="./Edit" asp-route-id="@equipo.IdEquipo">Editar</a> |
+                        <a asp-page="./Delete" asp-route-id="@equipo.IdEquipo">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Detalles Técnicos y Administrativos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ram</th>
+                <th>DiscoDuro</th>
+                <th>Procesador</th>
+                <th>So</th>
+                <th>FechaUltimaCaptura</th>
+                <th>FechaUltimoMantto</th>
+                <th>ElaboroResponsiva</th>
+                <th>Ubicacion</th>
+                <th>Departamento</th>
+                <th>Empleado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equipo in Model.Equipos)
+            {
+                <tr>
+                    <td>@equipo.Ram</td>
+                    <td>@equipo.DiscoDuro</td>
+                    <td>@equipo.Procesador</td>
+                    <td>@equipo.So</td>
+                    <td>@equipo.FechaUltimaCaptura</td>
+                    <td>@equipo.FechaUltimoMantto</td>
+                    <td>@equipo.ElaboroResponsiva</td>
+                    <td>@equipo.Zona</td>
+                    <td>@equipo.NombreDepartamento</td>
+                    <td>@equipo.IdEmpleado</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+            <h2>Datos Empleado</h2>
+            <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Puesto</th>
+                <th>Usuario Windows</th>
+                <th>Usuario AD</th>
+                <th>Correo</th>
+                <th>Pass</th>
+                <th>Acceso</th>
+                <th>IdDepartamento</th>
+                <th>IdUbicacion</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Empleados != null && Model.Empleados.Any())
+            {
+                foreach (var empleado in Model.Empleados)
+                {
+                    <tr>
+                        <td>@empleado.Nombre @empleado.ApellidoP @empleado.ApellidoM</td>
+                        <td>@empleado.Puesto</td>
+                        <td>@empleado.UsuarioWindows</td>
+                        <td>@empleado.UsuarioAD</td>
+                        <td>@empleado.Correo</td>
+                        <td>@empleado.Pass</td>
+                        <td>@empleado.Acceso</td>
+                        <td>@empleado.IdDepartamento</td>
+                        <td>@empleado.IdUbicacion</td>
+                        <td>@empleado.Status</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="12" class="text-center">No hay empleados para mostrar.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a asp-page="./Create">Crear Nuevo Rol</a>
+</p>

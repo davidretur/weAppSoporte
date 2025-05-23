@@ -1,0 +1,29 @@
+﻿@page
+@model WebAppInventarioS.Pages.Ubicaciones.DeleteModel
+@{
+	ViewData["Title"] = "Baja Ubicacion";
+}
+
+<h1>Baja Rol</h1>
+
+<h3>¿Estás seguro de que deseas dar de baja este Rol?</h3>
+
+@if (Model.Ubicacion != null)
+{
+    <dl class="row">
+        <dt class="col-sm-2">Nombre Ubicacion</dt>
+        <dd class="col-sm-10">@Model.Ubicacion.Zona</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.Ubicacion.Status</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Ubicacion.IdUbicacion" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+}
+else
+{
+    <p>Ubicacion No encontrada</p>
+}

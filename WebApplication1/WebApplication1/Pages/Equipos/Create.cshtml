@@ -1,0 +1,118 @@
+﻿@page
+@model WebAppInventarioS.Pages.Equipos.CreateModel
+@{
+	ViewData["Title"] = "Crear nuevo Equipo";
+}
+<h1>Crear nuevo Equipo</h1>
+<form method="post">
+    <div class="row">
+        <!-- Primera columna -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Equipo.NumeroSerie"></label>
+                <input asp-for="Equipo.NumeroSerie" class="form-control" />
+                <span asp-validation-for="Equipo.NumeroSerie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Etiqueta"></label>
+                <input asp-for="Equipo.Etiqueta" class="form-control" />
+                <span asp-validation-for="Equipo.Etiqueta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Marca"></label>
+                <input asp-for="Equipo.Marca" class="form-control" />
+                <span asp-validation-for="Equipo.Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Modelo"></label>
+                <input asp-for="Equipo.Modelo" class="form-control" />
+                <span asp-validation-for="Equipo.Modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Ip"></label>
+                <input asp-for="Equipo.Ip" class="form-control" />
+                <span asp-validation-for="Equipo.Ip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Ram"></label>
+                <input asp-for="Equipo.Ram" class="form-control" />
+                <span asp-validation-for="Equipo.Ram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.DiscoDuro"></label>
+                <input asp-for="Equipo.DiscoDuro" class="form-control" />
+                <span asp-validation-for="Equipo.DiscoDuro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Procesador"></label>
+                <input asp-for="Equipo.Procesador" class="form-control" />
+                <span asp-validation-for="Equipo.Procesador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.So">Sistema Operativo</label>
+                <input asp-for="Equipo.So" class="form-control" />
+                <span asp-validation-for="Equipo.So" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Segunda columna -->
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Equipo.EquipoEstatus">Estatus del Equipo</label>
+                <input asp-for="Equipo.EquipoEstatus" class="form-control" />
+                <span asp-validation-for="Equipo.EquipoEstatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Empresa"></label>
+                <input asp-for="Equipo.Empresa" class="form-control" />
+                <span asp-validation-for="Equipo.Empresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.Renovar">Renovar</label>
+                <select asp-for="Equipo.Renovar" class="form-control">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="Equipo.Renovar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.FechaUltimaCaptura">Fecha de Última Captura</label>
+                <input asp-for="Equipo.FechaUltimaCaptura" class="form-control" />
+                <span asp-validation-for="Equipo.FechaUltimaCaptura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.FechaUltimoMantto">Fecha de Último Mantenimiento</label>
+                <input asp-for="Equipo.FechaUltimoMantto" class="form-control" />
+                <span asp-validation-for="Equipo.FechaUltimoMantto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.ElaboroResponsiva">Elaboro Responsiva</label>
+                <input asp-for="Equipo.ElaboroResponsiva" class="form-control" />
+                <span asp-validation-for="Equipo.ElaboroResponsiva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.IdDepartamento">Departamento</label>
+                <select asp-for="Equipo.IdDepartamento" class="form-control" asp-items="Model.Departamentos"></select>
+				<span asp-validation-for="Equipo.IdDepartamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.IdEmpleado">Empleado</label>
+                <select asp-for="Equipo.IdEmpleado" class="form-control" asp-items="Model.Empleados"></select>
+                <span asp-validation-for="Equipo.IdEmpleado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipo.IdUbicacion">Ubicacion</label>
+                <select asp-for="Equipo.IdUbicacion" class="form-control" asp-items="Model.Ubicaciones"></select>
+                <span asp-validation-for="Equipo.IdUbicacion" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de submit -->
+    <div class="form-group mt-4">
+        <button type="submit" class="btn btn-primary">Submit</button>
+		<a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+

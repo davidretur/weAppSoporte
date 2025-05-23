@@ -1,0 +1,32 @@
+﻿@page
+@model WebAppInventarioS.Pages.Empleados.DeleteEmpleadoModel
+@{
+	ViewData["Title"] = "Baja Empleado";
+}
+<h1>Baja Empleado</h1>
+
+<h3>¿Estás seguro de que deseas dar de baja este Rol?</h3>
+
+@if (Model.Empleado != null)
+{
+    <dl class="row">
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.Empleado.Nombre</dd>
+        <dt class="col-sm-2">Apellido Paterno</dt>
+        <dd class="col-sm-10">@Model.Empleado.ApellidoP</dd>
+		<dt class="col-sm-2">Apellido Materno</dt>
+		<dd class="col-sm-10">@Model.Empleado.ApellidoM</dd>
+        <dt class="col-sm-2">Status</dt>
+        <dd class="col-sm-10">@Model.Empleado.Status</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Empleado.IdEmpleado" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+}
+else
+{
+    <p>Empleado No encontrado</p>
+}

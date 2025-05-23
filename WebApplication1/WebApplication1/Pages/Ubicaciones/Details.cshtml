@@ -1,0 +1,22 @@
+﻿@page
+@model WebAppInventarioS.Pages.Ubicaciones.DetailsModel
+@{
+	ViewData["Title"] = "Detalles Ubicacion";
+}
+<h3>Detalles de la Ubicacion</h3>
+@if (Model.Ubicacion != null)
+{
+	<dl class="row">
+		<dt class="col-sm-2">Nombre Ubicacion</dt>
+		<dd class="col-sm-10">@Model.Ubicacion.Zona</dd>
+		<dt class="col-sm-2">Status</dt>
+		<dd class="col-sm-10">@Model.Ubicacion.Status</dd>
+	</dl>
+	<a asp-page="./Edit" asp-route-id="@Model.Ubicacion.IdUbicacion" class="btn btn-primary">Editar</a>
+	<a asp-page="./Index" class="btn btn-secondary">Regresar</a>
+}
+else
+{
+	<p>Ubicacion no encontrada. Verifique el ID proporcionado.</p>
+	<a asp-page="./Index" class="btn btn-secondary">Regresar</a>
+}

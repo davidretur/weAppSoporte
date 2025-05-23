@@ -1,0 +1,45 @@
+﻿@page
+@model WebAppInventarioS.Pages.Ubicaciones.IndexModel
+@{
+	ViewData["Title"] = "Lista de Ubicaciones";
+}
+
+<h1>Ubicaciones</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Zona</th>
+            <th>Region</th>
+            <th>Centro</th>
+            <th>Estado</th>
+            <th>Sucursal</th>
+            <th>Status</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ubicacion in Model.Ubicaciones)
+        {
+            <tr>
+                <td>@ubicacion.Zona</td>
+                <td>@ubicacion.Region</td>
+                <td>@ubicacion.Centro</td>
+                <td>@ubicacion.Estado</td>
+                <td>@ubicacion.Sucursal</td>
+                <td>@ubicacion.Status</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@ubicacion.IdUbicacion">Detalles</a> |
+                    <a asp-page="./Edit" asp-route-id="@ubicacion.IdUbicacion">Editar</a> |
+                    <a asp-page="./Delete" asp-route-id="@ubicacion.IdUbicacion">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Create">Crear Nueva Ubicacion</a>
+</p>
+
+

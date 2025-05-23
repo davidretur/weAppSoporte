@@ -1,0 +1,38 @@
+﻿@page
+@model WebAppInventarioS.Pages.Ubicaciones.CreateModel
+@{
+	ViewData["Title"] = "Crear Ubicacion";
+}
+<h1>Crear Ubicacion</h1>
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Ubicacion.Zona"></label>
+		<input asp-for="Ubicacion.Zona" class="form-control" />
+		<span asp-validation-for="Ubicacion.Zona" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Ubicacion.Region"></label>
+		<input asp-for="Ubicacion.Region" class="form-control" />
+		<span asp-validation-for="Ubicacion.Region" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Ubicacion.Centro"></label>
+		<input asp-for="Ubicacion.Centro" class="form-control" />
+		<span asp-validation-for="Ubicacion.Centro" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Ubicacion.Estado"></label>
+		<input asp-for="Ubicacion.Estado" class="form-control" />
+		<span asp-validation-for="Ubicacion.Estado" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Ubicacion.Sucursal"></label>
+		<input asp-for="Ubicacion.Sucursal" class="form-control" />
+		<span asp-validation-for="Ubicacion.Sucursal" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Crear</button>
+	<a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+</form>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

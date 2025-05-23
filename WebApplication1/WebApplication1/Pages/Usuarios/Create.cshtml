@@ -1,0 +1,35 @@
+﻿@page
+@model WebAppInventarioS.Pages.Usuarios.CreateModel
+@{
+	ViewData["Title"] = "Crear Usuario";
+}
+<h1>Crear Usuario</h1>
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Usuario.UsuarioSesion"></label>
+		<input asp-for="Usuario.UsuarioSesion" class="form-control" />
+		<span asp-validation-for="Usuario.UsuarioSesion" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Usuario.Contracena"></label>
+		<input asp-for="Usuario.Contracena" class="form-control" />
+		<span asp-validation-for="Usuario.Contracena" class="text-danger"></span>
+	</div>
+
+	<div class="form-group">
+		<label asp-for="Usuario.IdRol"></label>
+		<select asp-for="Usuario.IdRol" class="form-control" asp-items="@Model.Roles">
+			<option value="">Seleccione un rol</option>
+		</select>
+		<span asp-validation-for="Usuario.IdRol" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<br />
+	</div>
+	<button type="submit" class="btn btn-primary">Crear</button>
+	<a asp-page="./Index">Cancelar</a>
+	</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

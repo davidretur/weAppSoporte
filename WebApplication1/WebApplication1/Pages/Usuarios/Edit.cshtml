@@ -1,0 +1,37 @@
+﻿@page
+@model WebAppInventarioS.Pages.Usuarios.EditModel
+@{
+	ViewData["Title"] = "Editar Usuario";
+}
+<h1>Editar Usuario</h1>
+<form method="post">
+	<input type="hidden" asp-for="Usuario.IdUsuario" />
+	<div class="form-group">
+		<label asp-for="Usuario.UsuarioSesion"></label>
+		<input asp-for="Usuario.UsuarioSesion" class="form-control" />
+		<span asp-validation-for="Usuario.UsuarioSesion" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Usuario.Contracena"></label>
+		<input asp-for="Usuario.Contracena" class="form-control" />
+		<span asp-validation-for="Usuario.Contracena" class="text-danger"></span>
+		</div>
+	<div class="form-group">
+		<label asp-for="Usuario.IdRol"></label>
+		<select asp-for="Usuario.IdRol" class="form-control" asp-items="Model.Roles">
+			<option value="">Seleccione un Rol</option>
+		</select>
+		<span asp-validation-for="Usuario.IdRol" class="text-danger"></span>
+	</div>
+	<br />
+	<div class="form-group">
+		<input type="submit" value="Guardar" class="btn btn-primary" />
+		<a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+	</div>
+</form>
+
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+

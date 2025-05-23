@@ -1,0 +1,20 @@
+﻿@page
+@model WebAppInventarioS.Pages.Departamentos.EditModel
+@{
+	ViewData["Title"] = "Editar Departamento";
+}
+<form method="post">
+    <input type="hidden" asp-for="Departamento.IdDepartamento" />
+    <div class="form-group">
+        <label asp-for="Departamento.NombreDepartamento"></label>
+        <input asp-for="Departamento.NombreDepartamento" class="form-control" />
+        <span asp-validation-for="Departamento.NombreDepartamento" class="text-danger"></span>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
