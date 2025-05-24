@@ -130,6 +130,40 @@
             }
         </tbody>
     </table>
+
+    <h2>Datos Licencia Office</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cuenta</th>
+                <th>Nombre Equipo</th>
+                <th>Numero Serie</th>
+                <th>Marca</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Licencias != null && Model.Licencias.Any())
+            {
+                foreach (var licencia in Model.Licencias)
+                {
+                    <tr>
+                        <td>@licencia.Cuenta</td>
+                        <td>@licencia.NumeroSerie</td>
+                        <td>@licencia.NumeroSerie</td>
+                        <td>@licencia.Marca</td>
+                        <td>@licencia.Status</td>  <!-- Adding the Status field -->
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="12" class="text-center">No hay licencias para mostrar.</td>  <!-- Updated message -->
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 <p>

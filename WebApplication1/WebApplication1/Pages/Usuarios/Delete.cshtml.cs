@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
+using WebAppSoporte.Models.Dtos;
 
 namespace WebAppInventarioS.Pages.Usuarios
 {
@@ -16,23 +17,35 @@ namespace WebAppInventarioS.Pages.Usuarios
             _rolService = rolService;
         }
         [BindProperty]
-        public Usuario Usuario { get; set; } = new Usuario();
-        public List<SelectListItem> Roles { get; set; }
-        public async Task<IActionResult> OnGetAsync(int id)
+
+
+        public UsuarioDto Usuarios { get; set; } = new UsuarioDto();
+        public List<Rol> Roles { get; set; } = new List<Rol>();
+        public async Task OnGetAsync(int id)
         {
-            Usuario = await _usuarioService.GetUsuarioById(id);
-            // Cargar Roles
-            var departamentos = await _rolService.GetRolesAsync();
-            Roles = departamentos.Select(d => new SelectListItem
-            {
-                Value = d.IdRol.ToString(),
-                Text = d.NombreRol
-            }).ToList();
-            if (Usuario == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            // Obtener el usuario por id
+            var usuario = await _usuarioService.GetUsuarioById(id);
+
+            // Obtener el rol del usuario
+            var rol = await _rolService.GetRolesAsync(usuario.IdRol);
+
+            // Asignar el rol al objeto Roles (en lugar de una lista)
+            Roles = new List<Rol> { rol };
+
+            // Mapear el usuario a UsuarioDto y asignar el NombreRol correspondiente
+            Usuarios = new UsuarioDto
+    {
+
+            IdUsuario = usuario.IdUsuario,
+            NombreCompleto = usuario.NombreCompleto,
+            Correo = usuario.Correo,
+            Puesto = usuario.Puesto,
+            UsuarioSesion = usuario.UsuarioSesion,
+            Contracena = usuario.Contracena,
+            NombreRol = rol?.NombreRol ?? string.Empty,
+            Status = usuario.Status
+        
+    };
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {

@@ -7,6 +7,8 @@
 @if (Model.Usuario != null)
 {
 	<dl class="row">
+		<dt class="col-sm-2">Nombre Completo</dt>
+		<dd class="col-sm-10">@Model.Usuario.NombreCompleto</dd>
 		<dt class="col-sm-2">Aceso de Usuario</dt>
 		<dd class="col-sm-10">@Model.Usuario.UsuarioSesion</dd>
 		<dt class="col-sm-2">Rol Usuario</dt>
@@ -17,7 +19,7 @@
 			@(departamento != null ? departamento.Text : "No asignado")
 		</dd>
 		<dt class="col-sm-2">Status</dt>
-		<dd class="col-sm-10">@Model.Usuario.Status</dd>
+		<dd class="col-sm-10">@(Model.Usuario.Status ? "Activo" : "Inactivo")</dd>
 	</dl>
 	<a asp-page="./Edit" asp-route-id="@Model.Usuario.IdUsuario" class="btn btn-primary">Editar</a>
 	<a asp-page="./Index" class="btn btn-secondary">Regresar</a>

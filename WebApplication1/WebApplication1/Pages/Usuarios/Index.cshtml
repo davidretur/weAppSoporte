@@ -7,8 +7,11 @@
 <table class="table">
     <thead>
         <tr>
+			<th>Nombre Completo</th>
+			<th>Puesto</th>
             <th>Usuario Sesion</th>
             <th>IdRol</th>
+            <th>Status</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -16,13 +19,15 @@
         @foreach (var usuario in Model.Usuarios)
         {
             <tr>
+                <td>@usuario.NombreCompleto</td>
+                <td>@usuario.Puesto</td>
                 <td>@usuario.UsuarioSesion</td>
-                <td>@usuario.IdRol</td>
-                <td>@usuario.Status</td>
+                <td>@usuario.NombreRol</td>
+                <td>@(usuario.Status == true ? "activo" : "inactivo")</td>
                 <td>
-                    <a asp-page="./Details" asp-route-id="@usuario.IdUsuario">Detalles</a> |
-                    <a asp-page="./Edit" asp-route-id="@usuario.IdUsuario">Editar</a> |
-                    <a asp-page="./Delete" asp-route-id="@usuario.IdUsuario">Eliminar</a>
+                    <a class="btn btn-dark" asp-page="./Details" asp-route-id="@usuario.IdUsuario">Detalles</a> 
+                    <a class="btn btn-success" asp-page="./Edit" asp-route-id="@usuario.IdUsuario">Editar</a> 
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@usuario.IdUsuario">Baja</a>
                 </td>
             </tr>
         }
@@ -30,5 +35,5 @@
 </table>
 
 <p>
-    <a asp-page="./Create">Crear Nuevo Empleado</a>
+    <a class="btn btn-primary" asp-page="./Create">Crear Nuevo Empleado</a>
 </p>

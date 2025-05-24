@@ -37,10 +37,32 @@ namespace WebAppInventarioS.Pages.Usuarios
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            // Recargar roles para el formulario en caso de error
+            var roles = await _rolService.GetRolesAsync();
+            Roles = roles.Select(r => new SelectListItem
+            {
+                Value = r.IdRol.ToString(),
+                Text = r.NombreRol
+            }).ToList();
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+
+            var usuariosExistentes = await _usuariosService.GetAllUsuarios();
+            if (usuariosExistentes.Any(u => u.Correo.Equals(Usuario.Correo, StringComparison.OrdinalIgnoreCase)))
+            {
+                ModelState.AddModelError("Usuario.Correo", "Ya existe un usuario con este correo.");
+                return Page();
+            }
+
+            if (usuariosExistentes.Any(u => u.UsuarioSesion.Equals(Usuario.UsuarioSesion, StringComparison.OrdinalIgnoreCase)))
+            {
+                ModelState.AddModelError("Usuario.UsuarioSesion", "Ya existe un usuario con este nombre de usuario.");
+                return Page();
+            }
+
             await _usuariosService.CreateUsuario(Usuario);
             return RedirectToPage("./Index");
         }

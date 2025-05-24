@@ -1,0 +1,35 @@
+﻿@page
+@model WebAppSoporte.Pages.LicenciasOffice.IndexModel
+@{
+	ViewData["Title"] = "Licencias Office";
+}
+
+<h1>Licencias</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cuenta</th>
+            <th>Id Equipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var licenciaOffice in Model.LicenciasOffice)
+        {
+            <tr>
+                <td>@licenciaOffice.Cuenta</td>
+                <td>@licenciaOffice.IdEquipo</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@licenciaOffice.IdLicencia">Detalles</a> |
+                    <a asp-page="./Edit" asp-route-id="@licenciaOffice.IdLicencia">Editar</a> |
+                    <a asp-page="./Delete" asp-route-id="@licenciaOffice.IdLicencia">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="./Create">Crear Nuevo Rol</a>
+</p>

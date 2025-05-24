@@ -36,7 +36,7 @@
 				<td>@empleado.Pass</td>
                 <td>@empleado.NombreDepartamento</td>
                 <td>@empleado.NombreUbicacion</td>
-                <td>@empleado.Status</td>
+                <td>@(empleado.Status == true ? "activo" : "inactivo")</td>
                 <td>
                     <a asp-page="./DetailsEmpleado" asp-route-id="@empleado.IdEmpleado">Detalles</a> |
                     <a asp-page="./Edit" asp-route-id="@empleado.IdEmpleado">Editar</a> |

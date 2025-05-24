@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj": {}
+    "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj": {
+    "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj",
+        "projectUniqueName": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj",
         "projectName": "WebAppSoporte",
-        "projectPath": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj",
+        "projectPath": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\WebAppSoporte.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

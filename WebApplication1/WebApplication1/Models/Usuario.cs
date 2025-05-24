@@ -6,6 +6,15 @@ namespace WebAppInventarioS.Models
     {
         public int IdUsuario { get; set; }
         [Required]
+        [StringLength(100)]
+        public string NombreCompleto { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Correo { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Puesto { get; set; }
+        [Required]
         [StringLength(50)]
         public string UsuarioSesion { get; set; }
         [Required]

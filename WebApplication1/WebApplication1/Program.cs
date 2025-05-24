@@ -1,4 +1,5 @@
 using WebAppInventarioS.Services;
+using WebAppSoporte.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddScoped<EmpleadoService>(); // Register EmpleadoService for d
 builder.Services.AddScoped<UbicacionService>(); // Register UbicacionService for dependency injection
 builder.Services.AddScoped<UsuariosService>(); // Register UsuariosService for dependency injection
 builder.Services.AddScoped<EquiposService>(); // Register EquiposService for dependency injection
+builder.Services.AddScoped<LicenciaOfficeService>(); // Register LicenciaOfficeService for dependency injection
 
 var app = builder.Build();
 
