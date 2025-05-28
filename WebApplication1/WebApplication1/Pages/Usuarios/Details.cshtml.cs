@@ -22,8 +22,9 @@ namespace WebAppInventarioS.Pages.Usuarios
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-
-            Usuario = await _usuarioService.GetUsuarioById(id);
+            try
+            {
+                Usuario = await _usuarioService.GetUsuarioById(id);
             // Cargar Roles
             var roles = await _rolService.GetRolesAsync();
             Roles = roles.Select(r => new SelectListItem
@@ -37,7 +38,12 @@ namespace WebAppInventarioS.Pages.Usuarios
                 return NotFound();
             }
             return Page();
-
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

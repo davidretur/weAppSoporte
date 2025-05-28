@@ -16,12 +16,25 @@ namespace WebAppInventarioS.Pages.Departamentos
         public Models.Departamento Departamento { get; set; } = new Models.Departamento();
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Departamento = await _departamentoService.GetDepartamentoByIdAsync(id);
-            if (Departamento == null)
+            try
             {
-                return NotFound();
+                Departamento = await _departamentoService.GetDepartamentoByIdAsync(id);
+                if (Departamento == null)
+                {
+                    return NotFound();
+                }
+                return Page();
             }
-            return Page();
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
+            catch (HttpRequestException ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Error fetching department: {ex.Message}");
+                return Page();
+            }
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {

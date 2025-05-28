@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
@@ -16,10 +17,12 @@ namespace WebAppInventarioS.Pages.Usuarios
         }
         public List<UsuarioDto> Usuarios { get; set; } = new List<UsuarioDto>();
         public List<Rol> Roles { get; set; } = new List<Rol>();
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            // Obtener todos los roles
-            Roles = await _rolService.GetRolesAsync();
+            try
+            {
+                // Obtener todos los roles
+                Roles = await _rolService.GetRolesAsync();
 
             // Obtener todos los usuarios
             var usuarios = await _usuariosService.GetAllUsuarios();
@@ -40,6 +43,13 @@ namespace WebAppInventarioS.Pages.Usuarios
                     Status = u.Status
                 };
             }).ToList();
+            return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

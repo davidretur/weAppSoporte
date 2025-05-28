@@ -12,7 +12,16 @@
 		<dt class="col-sm-2">Nombre</dt>
 		<dd class="col-sm-10">@Model.departamento.NombreDepartamento</dd>
 		<dt class="col-sm-2">Status</dt>
-		<dd class="col-sm-10">@Model.departamento.Status</dd>
+		<dd class="col-sm-10">
+			@if (@Model.departamento.Status)
+			{
+				<span class="badge bg-success">Activo</span>
+			}
+			else
+			{
+				<span class="badge bg-danger">Inactivo</span>
+			}
+		</dd>
 	</dl>
 	<a asp-page="./Edit" asp-route-id="@Model.departamento.IdDepartamento" class="btn btn-primary">Editar</a>
 	<a asp-page="./Index" class="btn btn-secondary">Regresar a Lista</a>

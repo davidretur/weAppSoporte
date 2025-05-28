@@ -5,9 +5,10 @@
 }
 <h1>Crear Departamento</h1>
 
-<form method="post">
+<div class="d-flex justify-content-center mt-5">
+    <form method="post" class="w-50">
     <div class="form-group">
-        <label asp-for="Departamento.NombreDepartamento"></label>
+            <label asp-for="Departamento.NombreDepartamento"> Nombre Departamento</label>
         <input asp-for="Departamento.NombreDepartamento" class="form-control" />
         <span asp-validation-for="Departamento.NombreDepartamento" class="text-danger"></span>
     </div>
@@ -15,7 +16,9 @@
         <br />
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
+		<a class="btn btn-secondary" asp-page="./Index">Cancelar</a>
 </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

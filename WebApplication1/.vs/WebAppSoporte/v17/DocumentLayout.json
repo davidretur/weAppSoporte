@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\departamentos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\departamentos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\empleados\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\empleados\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\departamentos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\departamentos\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\services\\departamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\services\\departamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|c:\\users\\administrador\\videos\\dwr\\laboral\\nueva carpeta\\net8c#entity\\websoporte\\weappsoporte\\webapplication1\\webapplication1\\pages\\departamentos\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB031CD9-DD93-4E34-BA3A-788F87B302B8}|WebApplication1\\WebAppSoporte.csproj|solutionrelative:webapplication1\\pages\\departamentos\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,105 +39,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Index.cshtml.cs",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Index.cshtml.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Departamentos\\Create.cshtml.cs",
+              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Create.cshtml.cs",
+              "RelativeToolTip": "WebApplication1\\Pages\\Departamentos\\Create.cshtml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwC0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T00:30:46.068Z",
+              "WhenOpened": "2025-05-28T01:08:07.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DepartamentoService.cs",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Services\\DepartamentoService.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Services\\DepartamentoService.cs",
+              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Services\\DepartamentoService.cs",
+              "RelativeToolTip": "WebApplication1\\Services\\DepartamentoService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAswDoAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T00:22:50.73Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Empleados\\Create.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Empleados\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Empleados\\Create.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Empleados\\Create.cshtml",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Create.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Departamentos\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Create.cshtml",
+              "RelativeToolTip": "WebApplication1\\Pages\\Departamentos\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:20:41.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Delete.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Delete.cshtml.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Delete.cshtml.cs",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Delete.cshtml.cs",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Delete.cshtml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T00:17:28.496Z",
+              "WhenOpened": "2025-05-28T00:18:24.458Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Delete.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Delete.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:15:26.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Details.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Details.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:10:36.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Edit.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Edit.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Edit.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:10:27.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Create.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Create.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Create.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADUAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:05:03.848Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Index.cshtml",
-              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Usuarios\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Usuarios\\Index.cshtml",
-              "RelativeToolTip": "WebApplication1\\Pages\\Usuarios\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAABoAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Pages\\Departamentos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Administrador\\Videos\\dwr\\laboral\\Nueva carpeta\\Net8c#Entity\\webSoporte\\weAppSoporte\\WebApplication1\\WebApplication1\\Pages\\Departamentos\\Index.cshtml",
+              "RelativeToolTip": "WebApplication1\\Pages\\Departamentos\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T00:02:28.643Z",
+              "WhenOpened": "2025-05-27T23:57:38.142Z",
               "EditorCaption": ""
             }
           ]

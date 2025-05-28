@@ -8,6 +8,7 @@ namespace WebAppInventarioS.Pages.Departamentos
     public class DeleteModel : PageModel
     {
         private readonly DepartamentoService _departamentoService;
+
         public DeleteModel(DepartamentoService departamentoService)
         {
             _departamentoService = departamentoService;
@@ -16,16 +17,26 @@ namespace WebAppInventarioS.Pages.Departamentos
         public Departamento Departamento { get; set; } = new Departamento();
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Departamento = await _departamentoService.GetDepartamentoByIdAsync(id);
+            try
+            {
+                Departamento = await _departamentoService.GetDepartamentoByIdAsync(id);
             if (Departamento == null)
             {
                 return NotFound();
             }
             return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
+            try
+            {
+                if (id == null)
             {
                 return NotFound();
             }
@@ -46,6 +57,12 @@ namespace WebAppInventarioS.Pages.Departamentos
             }
 
             return RedirectToPage("./Index");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

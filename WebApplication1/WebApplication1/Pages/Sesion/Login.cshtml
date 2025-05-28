@@ -1,0 +1,29 @@
+﻿@page
+@model WebAppSoporte.Pages.Sesion.LoginModel
+@{
+	ViewData["Title"] = "Iniciar Sesión";
+}
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+<div class="d-flex justify-content-center mt-5">
+	<form method="post" class="w-50">
+		<h1 class="text-center mb-4">Iniciar Sesión</h1>
+		<div class="form-group">
+			<label asp-for="UsuarioSesion"></label>
+			<input asp-for="UsuarioSesion" class="form-control" required />
+			<span asp-validation-for="UsuarioSesion" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Contrasena"></label>
+			<input asp-for="Contrasena" type="password" class="form-control" required />
+			<span asp-validation-for="Contrasena" class="text-danger"></span>
+		</div>
+		<br />
+		<div class="form-group text-center">
+			<input type="submit" value="Iniciar Sesión" class="btn btn-primary w-100" />
+		</div>
+	</form>
+</div> 
+

@@ -108,6 +108,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrador/Videos/dwr/laboral/Nueva carpeta/Net8c\#Entity/webSoporte/weAppSoporte/WebApplication1/WebApplication1/Pages/Sesion/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VzaW9uXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrador/Videos/dwr/laboral/Nueva carpeta/Net8c\#Entity/webSoporte/weAppSoporte/WebApplication1/WebApplication1/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -130,6 +134,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrador/Videos/dwr/laboral/Nueva carpeta/Net8c\#Entity/webSoporte/weAppSoporte/WebApplication1/WebApplication1/Pages/Ubicaciones/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVWJpY2FjaW9uZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrador/Videos/dwr/laboral/Nueva carpeta/Net8c\#Entity/webSoporte/weAppSoporte/WebApplication1/WebApplication1/Pages/Usuarios/Contracena.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcQ29udHJhY2VuYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrador/Videos/dwr/laboral/Nueva carpeta/Net8c\#Entity/webSoporte/weAppSoporte/WebApplication1/WebApplication1/Pages/Usuarios/Create.cshtml]

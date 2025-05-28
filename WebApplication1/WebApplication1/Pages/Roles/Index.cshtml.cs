@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
@@ -12,9 +13,18 @@ namespace WebAppInventarioS.Pages.Roles
             _rolService = rolService;
         }
         public List<Rol> Roles { get; set; } = new List<Rol>();
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Roles = await _rolService.GetRolesAsync();
+            try
+            {
+                Roles = await _rolService.GetRolesAsync();
+                return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

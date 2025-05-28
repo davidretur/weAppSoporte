@@ -1,0 +1,49 @@
+﻿@page
+@model WebAppSoporte.Pages.Usuarios.ContracenaModel
+@{
+	ViewData["Title"] = "Actualizar Contraseña";
+}
+<h1>Actualizar Contraseña</h1>
+
+<div class="d-flex justify-content-center mt-5">
+	<form method="post" class="w-50">
+		<input type="hidden" asp-for="Usuario.IdUsuario" />
+		<div class="form-group">
+			<label asp-for="Usuario.Contracena"> Nueva Contraceña</label>
+			<div class="input-group">
+				<input asp-for="Usuario.Contracena" class="form-control" />
+				<button type="button" class="btn btn-outline-secondary" id="btnCopiarContrasena" tabindex="-1">
+					Copiar
+				</button>
+			</div>
+			<span asp-validation-for="Usuario.Contracena" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<br />
+		</div>
+		<button type="submit" class="btn btn-success">Actualizar Contraseña</button>
+		<a class="btn btn-secondary" asp-page="./Index">Cancelar</a>
+	</form>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+
+		document.addEventListener('DOMContentLoaded', function () {
+			const input = document.querySelector('input[name="Usuario.Contracena"]');
+			if (input) {
+				input.value = generarContrasena(8);
+			}
+		});
+
+		document.getElementById('btnCopiarContrasena').addEventListener('click', function () {
+			const input = document.querySelector('input[name="Usuario.Contracena"]');
+			if (input) {
+				input.select();
+				input.setSelectionRange(0, 99999); // Para dispositivos móviles
+				document.execCommand('copy');
+			}
+		});
+	</script>
+}

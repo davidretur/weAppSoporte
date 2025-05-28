@@ -25,6 +25,7 @@ namespace WebAppInventarioS.Pages.Empleados
         public List<SelectListItem> Ubicaciones { get; set; }
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            try { 
             if (id == null)
             {
                 return NotFound();
@@ -54,6 +55,12 @@ namespace WebAppInventarioS.Pages.Empleados
             }).ToList();
 
             return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

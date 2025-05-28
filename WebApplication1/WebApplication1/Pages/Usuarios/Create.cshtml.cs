@@ -27,13 +27,21 @@ namespace WebAppInventarioS.Pages.Usuarios
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var roles = await _rolService.GetRolesAsync();
+            try
+            {
+                var roles = await _rolService.GetRolesAsync();
             Roles = roles.Select(r => new SelectListItem
             {
                 Value = r.IdRol.ToString(),
                 Text = r.NombreRol
             }).ToList();
             return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
         public async Task<IActionResult> OnPostAsync()
         {

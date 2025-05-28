@@ -16,12 +16,19 @@ namespace WebAppInventarioS.Pages.Empleados
         public Models.Empleado Empleado { get; set; } = new Models.Empleado();
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            try { 
             Empleado = await _empleadoService.GetEmpleadoByIdAsync(id);
             if (Empleado == null)
             {
                 return NotFound();
             }
             return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {

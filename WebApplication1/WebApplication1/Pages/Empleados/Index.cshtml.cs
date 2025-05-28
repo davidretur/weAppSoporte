@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppInventarioS.Models.Dtos;
 using WebAppInventarioS.Services;
@@ -18,12 +19,36 @@ namespace WebAppInventarioS.Pages.Empleados
         }
         public List<EmpleadoDto> empleados { get; set; } = new List<EmpleadoDto>();
 
-        public async Task OnGetAsync()
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
-            empleados = await _empleadoService.GetAllEmpleados(
-                _departamentoService,
-                _ubicacionService
-            );
+            try
+            {
+                empleados = await _empleadoService.GetAllEmpleados(
+                    _departamentoService,
+                    _ubicacionService
+                );
+
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    var term = SearchTerm.Trim().ToLower();
+                    empleados = empleados.Where(e =>
+                        ($"{e.Nombre} {e.ApellidoP} {e.ApellidoM}".ToLower().Contains(term) ||
+                         (e.UsuarioWindows?.ToLower().Contains(term) ?? false) ||
+                         (e.Correo?.ToLower().Contains(term) ?? false)
+                        )
+                    ).ToList();
+                }
+
+                return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

@@ -91,17 +91,21 @@
 				document.execCommand('copy');
 			}
 		});
-			document.getElementById('nombreCompleto').addEventListener('input', function () {
-			const nombreCompleto = this.value.trim().toLowerCase();
-			const partes = nombreCompleto.split(' ');
-			let usuarioSesion = '';
-			if (partes.length > 1) {
-				usuarioSesion = partes[0][0] + partes[1];
-			} else if (partes.length === 1) {
-				usuarioSesion = partes[0];
-			}
-			document.getElementById('usuarioSesion').value = usuarioSesion;
-		});
+        document.getElementById('nombreCompleto').addEventListener('input', function () {
+            const nombreCompleto = this.value.trim().toLowerCase();
+            const partes = nombreCompleto.split(' ');
+            let usuarioSesion = '';
+            if (partes.length > 1) {
+                usuarioSesion = partes[0][0] + partes[1];
+            } else if (partes.length === 1) {
+                usuarioSesion = partes[0];
+            }
+            // Generar dos dígitos aleatorios
+            const randomDigits = Math.floor(Math.random() * 90 + 10).toString(); // Siempre dos dígitos
+            // Tomar máximo 6 caracteres del usuario base y agregar los dos dígitos
+            usuarioSesion = usuarioSesion.substring(0, 6) + randomDigits;
+            document.getElementById('usuarioSesion').value = usuarioSesion;
+        });
 	</script>
 
 }

@@ -18,6 +18,8 @@ builder.Services.AddScoped<UbicacionService>(); // Register UbicacionService for
 builder.Services.AddScoped<UsuariosService>(); // Register UsuariosService for dependency injection
 builder.Services.AddScoped<EquiposService>(); // Register EquiposService for dependency injection
 builder.Services.AddScoped<LicenciaOfficeService>(); // Register LicenciaOfficeService for dependency injection
+builder.Services.AddScoped<AuthService>(); // Register AuthService for authentication
+builder.Services.AddSingleton<AuthState>(); // Register AuthState as a singleton for authentication state management
 
 var app = builder.Build();
 

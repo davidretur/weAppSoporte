@@ -14,10 +14,18 @@ namespace WebAppSoporte.Pages.LicenciasOffice
             _licenciaOfficeService = licenciaOfficeService;
         }
         public List<LicenciaOffice> LicenciasOffice { get; set; } = new List<LicenciaOffice>();
-        public async Task OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            try { 
             LicenciasOffice = await _licenciaOfficeService.GetAllLicenciasOffice();
+            return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+           return RedirectToPage("/Sesion/Login");
         }
+      }
 
     }
 }

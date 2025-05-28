@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
@@ -13,9 +14,18 @@ namespace WebAppInventarioS.Pages.Departamentos
         }
         public List<Departamento> departamentos { get; set; } = new List<Departamento>();
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            departamentos = await _departamentoService.GetAllDepartamentos();
+            try
+            {
+                departamentos = await _departamentoService.GetAllDepartamentos();
+                return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
     }
 }

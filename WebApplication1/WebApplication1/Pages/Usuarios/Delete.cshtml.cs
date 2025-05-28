@@ -21,10 +21,12 @@ namespace WebAppInventarioS.Pages.Usuarios
 
         public UsuarioDto Usuarios { get; set; } = new UsuarioDto();
         public List<Rol> Roles { get; set; } = new List<Rol>();
-        public async Task OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            // Obtener el usuario por id
-            var usuario = await _usuarioService.GetUsuarioById(id);
+            try
+            {
+                // Obtener el usuario por id
+                var usuario = await _usuarioService.GetUsuarioById(id);
 
             // Obtener el rol del usuario
             var rol = await _rolService.GetRolesAsync(usuario.IdRol);
@@ -46,6 +48,17 @@ namespace WebAppInventarioS.Pages.Usuarios
             Status = usuario.Status
         
     };
+                    if (Usuarios == null)
+                    {
+                        return NotFound();
+                    }
+                    return Page();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Redirige a la página de login
+                return RedirectToPage("/Sesion/Login");
+            }
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {

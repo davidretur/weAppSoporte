@@ -2,33 +2,51 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
+using WebAppSoporte.Services;
+using static WebAppInventarioS.Services.DepartamentoService;
 
 namespace WebAppInventarioS.Pages.Departamentos
 {
     public class CreateModel : PageModel
     {
         private readonly DepartamentoService _departamentoService;
+        private readonly AuthState _authState;
 
-        public CreateModel(DepartamentoService departamentoService)
+        public CreateModel(DepartamentoService departamentoService, AuthState authState)
         {
             _departamentoService = departamentoService;
+            _authState = authState;
         }
         [BindProperty]
         public Departamento Departamento { get; set; } = new Departamento();
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return Page();
+                // Verifica si el usuario está autenticado (tiene token válido)
+                if (string.IsNullOrEmpty(_authState?.Token) || !_authState.IsAuthenticated)
+                {
+                    // Redirige al login si no hay token o no está autenticado
+                    return RedirectToPage("/Sesion/Login");
+                }
+                if (!ModelState.IsValid)
+                {
+                    return Page();
+                }
+                var result = await _departamentoService.CreateDepartamentoAsync(Departamento);
+                if (result != null)
+                {
+                    return RedirectToPage("./Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Error creating department. Please try again.");
+                    return Page();
+                }
             }
-            var result = await _departamentoService.CreateDepartamentoAsync(Departamento);
-            if (result != null)
+            catch (Exception)
             {
-                return RedirectToPage("./Index");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Error creating department. Please try again.");
+                ModelState.AddModelError(string.Empty, "Ocurrió un error inesperado. Intenta nuevamente.");
                 return Page();
             }
         }
