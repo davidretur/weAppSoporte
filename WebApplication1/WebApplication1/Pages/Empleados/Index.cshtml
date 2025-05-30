@@ -5,11 +5,21 @@
 }
 <h1>Empleados</h1>
 
-<form class="mb-3">
+
+<form method="get" class="mb-3 w-50 mx-auto">
     <div class="input-group">
-        <input type="text" id="searchInput" class="form-control" placeholder="Buscar empleado..." autocomplete="off" />
+        <input type="text" name="busqueda" value="@Model.busqueda" class="form-control" placeholder="Buscar por Nombre, Apellidos, usuario Windows, Correo" />
+        <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
 </form>
+<div class="text-center">
+    <h4>Filtar lista</h4>
+    <div class="mb-3 w-50 ms-auto">
+        <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Filtrar empleado..." autocomplete="off" />
+        </div>
+    </div>
+</div>
 
 <table class="table">
     <thead>
@@ -38,11 +48,27 @@
 				<td>@empleado.Pass</td>
                 <td>@empleado.NombreDepartamento</td>
                 <td>@empleado.NombreUbicacion</td>
-                <td>@(empleado.Status == true ? "activo" : "inactivo")</td>
+                <td>
+                    @if (empleado.Status)
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactivo</span>
+                    }
+                </td>
                 <td>
                     <a class="btn btn-secondary" asp-page="./DetailsEmpleado" asp-route-id="@empleado.IdEmpleado">Detalles</a> 
-                    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@empleado.IdEmpleado">Editar</a> 
-                    <a class="btn btn-danger" asp-page="./DeleteEmpleado" asp-route-id="@empleado.IdEmpleado">Eliminar</a>
+                    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@empleado.IdEmpleado">Editar</a>
+                    @if (!empleado.Status)
+                    {
+                        <a class="btn btn-success" asp-page="./DeleteEmpleado" asp-route-id="@empleado.IdEmpleado">Alta</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-page="./DeleteEmpleado" asp-route-id="@empleado.IdEmpleado">Baja</a>
+                    }
                 </td>
             </tr>
         }

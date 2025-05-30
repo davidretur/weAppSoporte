@@ -5,7 +5,7 @@
 }
 <h1>Baja Empleado</h1>
 
-<h3>¿Estás seguro de que deseas dar de baja este Rol?</h3>
+<h3>¿Estás seguro de que deseas dar de baja o alta este Empleado?</h3>
 
 @if (Model.Empleado != null)
 {
@@ -17,13 +17,25 @@
 		<dt class="col-sm-2">Apellido Materno</dt>
 		<dd class="col-sm-10">@Model.Empleado.ApellidoM</dd>
         <dt class="col-sm-2">Status</dt>
-        <dd class="col-sm-10">@Model.Empleado.Status</dd>
+        <dd class="col-sm-10">
+            @if (@Model.Empleado.Status)
+            {
+                <span class="badge bg-success">Activo</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Inactivo</span>
+            }
+        </dd>
     </dl>
 
     <form method="post">
         <input type="hidden" asp-for="Empleado.IdEmpleado" />
-        <button type="submit" class="btn btn-danger">Eliminar</button>
-        <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+        <input type="hidden" asp-for="Empleado.Nombre" />
+        <input type="hidden" asp-for="Empleado.ApellidoP" />
+        <input type="hidden" asp-for="Empleado.ApellidoM" />
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <a asp-page="./Index" asp-route-busqueda="@Model.Empleado.Nombre @Model.Empleado.ApellidoP @Model.Empleado.ApellidoM" class="btn btn-secondary">Cancelar</a>
     </form>
 }
 else

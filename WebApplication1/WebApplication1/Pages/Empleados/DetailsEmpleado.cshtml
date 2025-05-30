@@ -32,7 +32,7 @@
 		</dd>
 	</dl>
 	<a asp-page="./Edit" asp-route-id="@Model.Empleado.IdEmpleado" class="btn btn-primary">Editar</a>
-	<a asp-page="./Index" class="btn btn-secondary">Regresar a Lista</a>
+	<a asp-page="./Index" asp-route-busqueda="@Model.Empleado.ApellidoP" class="btn btn-secondary">Cancelar</a>
 }
 else
 {

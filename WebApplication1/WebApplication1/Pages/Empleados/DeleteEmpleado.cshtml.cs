@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppInventarioS.Models;
 using WebAppInventarioS.Services;
 
 namespace WebAppInventarioS.Pages.Empleados
@@ -13,7 +14,7 @@ namespace WebAppInventarioS.Pages.Empleados
             _empleadoService = empleadoService;
         }
         [BindProperty]
-        public Models.Empleado Empleado { get; set; } = new Models.Empleado();
+        public Empleado Empleado { get; set; } = new Empleado();
         public async Task<IActionResult> OnGetAsync(int id)
         {
             try { 
@@ -39,6 +40,7 @@ namespace WebAppInventarioS.Pages.Empleados
             try
             {
                 await _empleadoService.DeleteEmpleadoAsync(id);
+                return RedirectToPage("/Empleados/Index", new { busqueda = Empleado.Nombre + " " + Empleado.ApellidoP + " " + Empleado.ApellidoM });
             }
             catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -51,8 +53,6 @@ namespace WebAppInventarioS.Pages.Empleados
                 ModelState.AddModelError(string.Empty, "An error occurred while deleting the article.");
                 return Page();
             }
-
-            return RedirectToPage("./Index");
         }
     }
 }

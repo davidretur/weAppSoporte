@@ -29,57 +29,56 @@ namespace WebAppInventarioS.Pages.Equipos
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
         public List<EquipoDto> Equipos { get; set; } = new List<EquipoDto>();
-        public List<Empleado> Empleados { get; set; } = new List<Empleado>();
+        public List<EmpleadoDto> Empleados { get; set; } = new List<EmpleadoDto>();
         public List<LicenciaOfEqDto> Licencias { get; set; } = new List<LicenciaOfEqDto>();
 
         public async Task<IActionResult> OnGetAsync()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(SearchTerm))
-            {
                 Equipos = new List<EquipoDto>();
-            }
-            else { }
-            var equipos = await _equiposService.GetAllEquiposLink(
-                _departamentoService,
-                _ubicacionService,
-                SearchTerm);
+                Empleados = new List<EmpleadoDto>();
+                Licencias = new List<LicenciaOfEqDto>();
 
-            if (!string.IsNullOrWhiteSpace(SearchTerm))
-            {
-                Equipos = equipos.Where(e =>
-                    (!string.IsNullOrEmpty(e.NumeroSerie) && e.NumeroSerie.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(e.Etiqueta) && e.Etiqueta.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
-                    (!string.IsNullOrEmpty(e.Modelo) && e.Modelo.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
-                ).ToList();
-            }
-            else
-            {
-                Equipos = equipos;
-            }
+                // Solo realiza la búsqueda si hay un término de búsqueda
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    var equipos = await _equiposService.GetAllEquiposLink(
+                        _departamentoService,
+                        _ubicacionService,
+                        SearchTerm);
 
-            Empleados = new List<Empleado>();
-            foreach (var equipo in Equipos)
-            {
-                var empleado = await _empleadoService.GetEmpleadoByIdAsync(equipo.IdEmpleado);
-                if (empleado != null)
-                    Empleados.Add(empleado);
+                    Equipos = equipos.Where(e =>
+                        (!string.IsNullOrEmpty(e.NumeroSerie) && e.NumeroSerie.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
+                        (!string.IsNullOrEmpty(e.Etiqueta) && e.Etiqueta.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
+                        (!string.IsNullOrEmpty(e.Modelo) && e.Modelo.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+                    ).ToList();
+
+                    foreach (var equipo in Equipos)
+                    {
+                        var empleado = await _empleadoService.GetEmpleadoByIdEquipo(equipo.IdEquipo,
+                            _departamentoService,
+                            _ubicacionService);
+                        if (empleado != null)
+                            Empleados.Add(empleado);
+                    }
+
+                    foreach (var equipo in Equipos)
+                    {
+                        var licencia = await _licenciaService.GetLicenciaOfficeByEquipod(equipo.IdEquipo);
+                        if (licencia != null)
+                            Licencias.Add(licencia);
+                    }
+                }
+
+                return Page();
             }
-            Licencias = new List<LicenciaOfEqDto>();
-            foreach (var equipo in Equipos)
-            {
-                var licencia = await _licenciaService.GetLicenciaOfficeByEquipod(equipo.IdEquipo);
-                if (licencia != null)
-                    Licencias.Add(licencia);
-            }
-            return Page();
-        }
             catch (UnauthorizedAccessException)
             {
                 // Redirige a la página de login
                 return RedirectToPage("/Sesion/Login");
-    }
-}
+            }
+        }
+
     }
 }

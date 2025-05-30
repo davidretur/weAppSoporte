@@ -20,26 +20,25 @@ namespace WebAppInventarioS.Pages.Empleados
         public List<EmpleadoDto> empleados { get; set; } = new List<EmpleadoDto>();
 
         [BindProperty(SupportsGet = true)]
-        public string SearchTerm { get; set; }
+        public string busqueda { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
             try
             {
-                empleados = await _empleadoService.GetAllEmpleados(
-                    _departamentoService,
-                    _ubicacionService
-                );
-
-                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                // Solo realiza la búsqueda si hay un término de búsqueda
+                if (!string.IsNullOrWhiteSpace(busqueda))
                 {
-                    var term = SearchTerm.Trim().ToLower();
-                    empleados = empleados.Where(e =>
-                        ($"{e.Nombre} {e.ApellidoP} {e.ApellidoM}".ToLower().Contains(term) ||
-                         (e.UsuarioWindows?.ToLower().Contains(term) ?? false) ||
-                         (e.Correo?.ToLower().Contains(term) ?? false)
-                        )
-                    ).ToList();
+                    empleados = await _empleadoService.GetEmpleados(
+                    _departamentoService,
+                    _ubicacionService,
+                    busqueda
+                );
+                }
+                else
+                {
+                    // Si no hay término de búsqueda, obtiene todos los empleados
+                    empleados = [];
                 }
 
                 return Page();

@@ -28,10 +28,10 @@ namespace WebAppInventarioS.Pages.Empleados
         public List<SelectListItem> Departamentos { get; set; }
         public List<SelectListItem> Ubicaciones { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        private async Task CargarCombosAsync()
         {
-            try { 
             var departamentos = await _departamentoService.GetAllDepartamentos();
+
             Departamentos = departamentos.Select(d => new SelectListItem
             {
                 Value = d.IdDepartamento.ToString(),
@@ -44,8 +44,12 @@ namespace WebAppInventarioS.Pages.Empleados
                 Value = u.IdUbicacion.ToString(),
                 Text = u.Zona
             }).ToList();
-
-            return Page();
+        }
+        public async Task<IActionResult> OnGetAsync()
+        {
+            try {
+                await CargarCombosAsync();
+                return Page();
             }
             catch (UnauthorizedAccessException)
             {
@@ -56,14 +60,33 @@ namespace WebAppInventarioS.Pages.Empleados
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            try
             {
-                // Recargar listas si hay error de validación
-                await OnGetAsync();
+                if (!ModelState.IsValid)
+                {
+                    // Recargar listas si hay error de validación
+                    await OnGetAsync();
+                    return Page();
+                }
+                await _empleadoService.CreateEmpleadoAsync(Empleado);
+                return RedirectToPage("./Index");
+            }
+            catch (HttpRequestException ex) when (ex.Message.Contains("400") || ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                ModelState.AddModelError("Empleado.Correo", "Ya existe un empleado con estos datos.");
+                ModelState.AddModelError("Empleado.Nombre", "Ya existe un empleado con estos datos.");
+                ModelState.AddModelError("Empleado.IdDepartamento", "Ya existe un empleado con estos datos.");
+                ModelState.AddModelError("Empleado.IdUbicacion", "Ya existe un empleado con estos datos.");
+                await CargarCombosAsync();
                 return Page();
             }
-            await _empleadoService.CreateEmpleadoAsync(Empleado);
-            return RedirectToPage("./Index");
+        
+            catch (HttpRequestException ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Error updating Empleado: {ex.Message}");
+                await CargarCombosAsync();
+                return Page();
+            }
         }
     }
 }

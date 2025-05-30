@@ -38,20 +38,27 @@ namespace WebAppInventarioS.Pages.Departamentos
         }
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
             try
             {
-                await _departamentoService.UpdateDepartamentoAsync(id, Departamento);
-            }
-            catch (HttpRequestException ex)
+                if (!ModelState.IsValid)
             {
-                ModelState.AddModelError(string.Empty, $"Error updating role: {ex.Message}");
                 return Page();
             }
-            return RedirectToPage("./Index");
+ 
+                await _departamentoService.UpdateDepartamentoAsync(id, Departamento);
+                return RedirectToPage("./Index");
+            }
+
+            catch (HttpRequestException ex) when (ex.Message.Contains("400") || ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                ModelState.AddModelError("Departamento.NombreDepartamento", "Ya existe un departamento con ese nombre o no cambiaste nada.");
+                return Page();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Ocurrió un error inesperado. Intenta nuevamente.");
+                return Page();
+            }
         }
     }
 }

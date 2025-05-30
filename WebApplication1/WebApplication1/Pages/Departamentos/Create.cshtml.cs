@@ -34,15 +34,17 @@ namespace WebAppInventarioS.Pages.Departamentos
                     return Page();
                 }
                 var result = await _departamentoService.CreateDepartamentoAsync(Departamento);
-                if (result != null)
+                if (result == null)
                 {
-                    return RedirectToPage("./Index");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Error creating department. Please try again.");
+                    ModelState.AddModelError("Departamento.NombreDepartamento", "Ya existe un departamento con ese nombre.");
                     return Page();
                 }
+                return RedirectToPage("./Index");
+            }
+            catch (HttpRequestException ex) when (ex.Message.Contains("400") || ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                ModelState.AddModelError("Departamento.NombreDepartamento", "Ya existe un departamento con ese nombre.");
+                return Page();
             }
             catch (Exception)
             {

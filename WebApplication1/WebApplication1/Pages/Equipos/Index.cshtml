@@ -41,11 +41,27 @@
                     <td>@equipo.Ip</td>
                     <td>@equipo.EquipoEstatus</td>
                     <td>@equipo.Empresa</td>
-                    <td>@equipo.Renovar</td>
                     <td>
-                        <a asp-page="./Details" asp-route-id="@equipo.IdEquipo">Detalles</a> |
-                        <a asp-page="./Edit" asp-route-id="@equipo.IdEquipo">Editar</a> |
-                        <a asp-page="./Delete" asp-route-id="@equipo.IdEquipo">Eliminar</a>
+                        @if (equipo.Status)
+                        {
+                            <span class="badge bg-success">No</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Si</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary" asp-page="./Details" asp-route-id="@equipo.IdEquipo">Detalles</a> 
+                        <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@equipo.IdEquipo">Editar</a>
+                        @if (equipo.Status)
+                        {
+                            <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@equipo.IdEquipo">Baja</a>
+                        }
+                        else
+                        {
+                         <a class="btn btn-success" asp-page="./Delete" asp-route-id="@equipo.IdEquipo">Alta</a>
+                        }
                     </td>
                 </tr>
             }
@@ -116,9 +132,18 @@
                         <td>@empleado.Correo</td>
                         <td>@empleado.Pass</td>
                         <td>@empleado.Acceso</td>
-                        <td>@empleado.IdDepartamento</td>
-                        <td>@empleado.IdUbicacion</td>
-                        <td>@empleado.Status</td>
+                        <td>@empleado.NombreDepartamento</td>
+                        <td>@empleado.NombreUbicacion</td>
+                        <td>
+                            @if (empleado.Status)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+                        </td>
                     </tr>
                 }
             }
@@ -152,7 +177,16 @@
                         <td>@licencia.NumeroSerie</td>
                         <td>@licencia.NumeroSerie</td>
                         <td>@licencia.Marca</td>
-                        <td>@licencia.Status</td>  <!-- Adding the Status field -->
+                        <td>
+                            @if (licencia.Status)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+                        </td>
                     </tr>
                 }
             }
@@ -167,5 +201,5 @@
 }
 
 <p>
-    <a asp-page="./Create">Crear Nuevo Rol</a>
+    <a class="btn btn-success" asp-page="./Create">Crear Nuevo Equipo</a>
 </p>

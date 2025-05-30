@@ -11,6 +11,7 @@
         public string UsuarioAD { get; set; }
         public string Correo { get; set; }
         public string Pass { get; set; }
+        public string Acceso { get; set; }
         public string NombreDepartamento { get; set; }
         public string NombreUbicacion { get; set; }
         public bool Status { get; set; }

@@ -6,6 +6,9 @@
 <h1>Editar Empleado</h1>
 
 <form method="post">
+    <div class="row">
+        <!-- Primera columna -->
+     <div class="col-md-6">
 	<input type="hidden" asp-for="Empleado.IdEmpleado" />
     <input type="hidden" asp-for="Empleado.IdDepartamento" />
     <div class="form-group">
@@ -14,12 +17,12 @@
         <span asp-validation-for="Empleado.Nombre" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Empleado.ApellidoP"></label>
+        <label asp-for="Empleado.ApellidoP"> Aprellido Paterno</label>
         <input asp-for="Empleado.ApellidoP" class="form-control" />
         <span asp-validation-for="Empleado.ApellidoP" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Empleado.ApellidoM"></label>
+        <label asp-for="Empleado.ApellidoM"> Apellido Materno</label>
         <input asp-for="Empleado.ApellidoM" class="form-control" />
 		<span asp-validation-for="Empleado.ApellidoM" class="text-danger"></span>
 	</div>
@@ -29,15 +32,18 @@
 		<span asp-validation-for="Empleado.Puesto" class="text-danger"></span>
 	</div>
     <div class="form-group">
-        <label asp-for="Empleado.UsuarioWindows"></label>
+                <label asp-for="Empleado.UsuarioWindows"> Usuario Windows</label>
 		<input asp-for="Empleado.UsuarioWindows" class="form-control" />
 		<span asp-validation-for="Empleado.UsuarioWindows" class="text-danger"></span>
 	</div>
-    <div class="form-group">
-		<label asp-for="Empleado.UsuarioAD"></label>
-		<input asp-for="Empleado.UsuarioAD" class="form-control" />
-		<span asp-validation-for="Empleado.UsuarioAD" class="text-danger"></span>
-	</div>
+            <div class="form-group">
+                <label asp-for="Empleado.UsuarioAD"> Usuario Administrador</label>
+                <input asp-for="Empleado.UsuarioAD" class="form-control" />
+                <span asp-validation-for="Empleado.UsuarioAD" class="text-danger"></span>
+            </div>
+        </div>
+        <!-- Segunda columna -->
+        <div class="col-md-6">
     <div class="form-group">
         <label asp-for="Empleado.Correo"></label>
 		<input asp-for="Empleado.Correo" class="form-control" />
@@ -48,29 +54,41 @@
 		<input asp-for="Empleado.Pass" class="form-control" />
 		<span asp-validation-for="Empleado.Pass" class="text-danger"></span>
 	</div>
+ 
     <div class="form-group">
 		<label asp-for="Empleado.Acceso"></label>
 		<input asp-for="Empleado.Acceso" class="form-control" />
 		<span asp-validation-for="Empleado.Acceso" class="text-danger"></span>
 	</div>
     <div class="form-group">
-        <label asp-for="Empleado.IdDepartamento"></label>
+                <label asp-for="Empleado.IdDepartamento">Departamento</label>
         <select asp-for="Empleado.IdDepartamento" class="form-control" asp-items="Model.Departamentos">
             <option value="">Seleccione una ubicación</option>
         </select>
         <span asp-validation-for="Empleado.IdDepartamento" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Empleado.IdUbicacion"></label>
+                <label asp-for="Empleado.IdUbicacion"> Ubicacion</label>
         <select asp-for="Empleado.IdUbicacion" class="form-control" asp-items="Model.Ubicaciones">
             <option value="">Seleccione una ubicación</option>
         </select>
         <span asp-validation-for="Empleado.IdUbicacion" class="text-danger"></span>
     </div>
-   <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Empleado.Status"></label>
+                <select asp-for="Empleado.Status" class="form-control">
+                    <option value="true">Activo</option>
+                    <option value="false">Inactivo</option>
+                </select>
+                <span asp-validation-for="Empleado.Status" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <br />
     <button type="submit" class="btn btn-primary">Guardar</button>
-    <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    <a asp-page="./Index" asp-route-busqueda="@Model.Empleado.Nombre @Model.Empleado.ApellidoP @Model.Empleado.ApellidoM" class="btn btn-secondary">Cancelar</a>
 </form>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
