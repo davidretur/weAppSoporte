@@ -5,7 +5,7 @@
 }
 <h1>Empleado</h1>
 
-@if (Model.Empleado != null)
+@if (Model.Equipos != null)
 {
 	<dl class="row">
 		<dt class="col-sm-2">Nombre</dt>
@@ -31,10 +31,39 @@
 			@(ubicacion != null ? ubicacion.Text : "No asignado")
 		</dd>
 	</dl>
+	@if (Model.Equipos != null)
+	{
+			<h3>Equipos asignados</h3>
+	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+		@foreach (var equipo in Model.Equipos)
+		{
+			<div class="col">
+				<div class="card h-100 shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">@equipo.NumeroSerie</h5>
+						<h6 class="card-subtitle mb-2 text-muted">@equipo.NumeroSerie</h6>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item"><strong>Marca:</strong> @equipo.Marca</li>
+							<li class="list-group-item"><strong>Modelo:</strong> @equipo.Modelo</li>
+							<li class="list-group-item"><strong>Número de Serie:</strong> @equipo.NumeroSerie</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	}
+	else
+	{
+		<p class="text-muted">No hay equipos asignados a este empleado.</p>
+	}
+	<br />
+	<br />
+
 	<a asp-page="./Edit" asp-route-id="@Model.Empleado.IdEmpleado" class="btn btn-primary">Editar</a>
 	<a asp-page="./Index" asp-route-busqueda="@Model.Empleado.ApellidoP" class="btn btn-secondary">Cancelar</a>
 }
 else
 {
-	<p>Empleado no encontrado</p>
+	<p class="text-muted">No hay equipos asignados a este empleado.</p>
 }

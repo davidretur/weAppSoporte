@@ -11,18 +11,21 @@ namespace WebAppInventarioS.Pages.Empleados
         private readonly EmpleadoService _empleadoService;
         private readonly DepartamentoService _departamentoService;
         private readonly UbicacionService _ubicacionService;
+        private readonly EquiposService _equiposService;
 
         public DetailsEmpleadoModel(EmpleadoService empleadoService, DepartamentoService departamentoService,
-            UbicacionService ubicacionService)
+            UbicacionService ubicacionService, EquiposService equiposService)
         {
             _empleadoService = empleadoService;
             _departamentoService = departamentoService;
             _ubicacionService = ubicacionService;
+            _equiposService = equiposService;
         }
         [BindProperty]
         public Empleado Empleado { get; set; } = new Empleado();
         public List<SelectListItem> Departamentos { get; set; }
         public List<SelectListItem> Ubicaciones { get; set; }
+        public List<Equipo> Equipos { get; set; }
         public async Task<IActionResult> OnGetAsync(int id)
         {
             try { 
@@ -37,9 +40,11 @@ namespace WebAppInventarioS.Pages.Empleados
             {
                 return NotFound();
             }
+                // Cargar equipo asociado al empleado
+                Equipos = await _equiposService.GetEquipoEmpleadoById(id);
 
-            // Cargar departamentos
-            var departamentos = await _departamentoService.GetAllDepartamentos();
+                // Cargar departamentos
+                var departamentos = await _departamentoService.GetAllDepartamentos();
             Departamentos = departamentos.Select(d => new SelectListItem
             {
                 Value = d.IdDepartamento.ToString(),

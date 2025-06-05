@@ -20,74 +20,87 @@ namespace WebAppInventarioS.Services
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authState.Token);
             }
         }
-        public async Task<List<Equipo>> GetAllEquipos()
+        public async Task<EquipoDto?> GetAllEquiposLink(
+            DepartamentoService departamentoService,
+            UbicacionService ubicacionService,
+            string busqueda
+        )
         {
             AddJwtHeader();
-            var response = await _httpClient.GetAsync("api/Equipo");
+            var response = await _httpClient.GetAsync($"api/Equipo/buscar/{busqueda}");
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 throw new UnauthorizedAccessException();
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<List<Equipo>>();
-        }
-            public async Task<List<EquipoDto>> GetAllEquiposLink(
-                DepartamentoService departamentoService,
-                UbicacionService ubicacionService,
-                string busqueda
-                )
+            var equipo = await response.Content.ReadFromJsonAsync<Equipo>();
+
+            // Si no hay coincidencia, equipo será null o tendrá valores por defecto
+            if (equipo == null || equipo.IdEquipo == 0)
+                return null;
+
+            // Obtén solo los datos relacionados por ID
+            if (equipo.IdDepartamento != null && equipo.IdEmpleado != null )
             {
-            if (string.IsNullOrEmpty(busqueda))
-            {
-                busqueda = "abc";
-            }
-                AddJwtHeader();
-                var response = await _httpClient.GetAsync($"api/Equipo/buscar/{busqueda}");
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                var departamento = await departamentoService.GetDepartamentoByIdAsync(equipo.IdDepartamento);
+                var ubicacion = await ubicacionService.GetUbicacionById(equipo.IdUbicacion);
+
+                var empleadoResponse = await _httpClient.GetAsync($"api/Empleado/{equipo.IdEmpleado}");
+                if (empleadoResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     throw new UnauthorizedAccessException();
-                response.EnsureSuccessStatusCode();
-                var equipos = await response.Content.ReadFromJsonAsync<List<Equipo>>();
+                empleadoResponse.EnsureSuccessStatusCode();
+                var empleado = await empleadoResponse.Content.ReadFromJsonAsync<Empleado>();
 
-                var departamentos = await departamentoService.GetAllDepartamentos();
-                var ubicaciones = await ubicacionService.GetAllUbicaciones();
-
-                var empleados = await _httpClient.GetAsync("api/Empleado");
-                if (empleados.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                    throw new UnauthorizedAccessException();
-                empleados.EnsureSuccessStatusCode();
-                var empleadosList = await empleados.Content.ReadFromJsonAsync<List<Empleado>>();
-
-            var resultado = from e in equipos
-                join u in ubicaciones on e.IdUbicacion equals u.IdUbicacion into uj
-                from u in uj.DefaultIfEmpty()
-                join d in departamentos on e.IdDepartamento equals d.IdDepartamento into dj
-                from d in dj.DefaultIfEmpty()
-                join emp in empleadosList on e.IdEmpleado equals emp.IdEmpleado into ej
-                from emp in ej.DefaultIfEmpty()
-                where e.Status == true
-                select new EquipoDto
+                return new EquipoDto
                 {
-                    IdEquipo = e.IdEquipo,
-                    NumeroSerie = e.NumeroSerie,
-                    Marca = e.Marca,
-                    Modelo = e.Modelo,
-                    Ip = e.Ip,
-                    Ram = e.Ram,
-                    DiscoDuro = e.DiscoDuro,
-                    Procesador = e.Procesador,
-                    So = e.So,
-                    EquipoEstatus = e.EquipoEstatus,
-                    Empresa = e.Empresa,
-                    Renovar = e.Renovar,
-                    FechaUltimaCaptura = e.FechaUltimaCaptura,
-                    FechaUltimoMantto = e.FechaUltimoMantto,
-                    ElaboroResponsiva = e.ElaboroResponsiva,
-                    Zona = u?.Zona ?? "Sin Ubicación",
-                    NombreDepartamento = d?.NombreDepartamento ?? "Sin Departamento",
-                    IdEmpleado = emp?.IdEmpleado ?? 1,
-                    Status = e.Status
+                    IdEquipo = equipo.IdEquipo,
+                    NumeroSerie = equipo.NumeroSerie,
+                    Etiqueta = equipo.Etiqueta,
+                    Marca = equipo.Marca,
+                    Modelo = equipo.Modelo,
+                    Ip = equipo.Ip,
+                    Ram = equipo.Ram,
+                    DiscoDuro = equipo.DiscoDuro,
+                    Procesador = equipo.Procesador,
+                    So = equipo.So,
+                    EquipoEstatus = equipo.EquipoEstatus,
+                    Empresa = equipo.Empresa,
+                    Renovar = equipo.Renovar,
+                    FechaUltimaCaptura = equipo.FechaUltimaCaptura,
+                    FechaUltimoMantto = equipo.FechaUltimoMantto,
+                    ElaboroResponsiva = equipo.ElaboroResponsiva,
+                    Zona = ubicacion?.Zona ?? "Sin Ubicación",
+                    NombreDepartamento = departamento?.NombreDepartamento ?? "Sin Departamento",
+                    IdEmpleado = empleado?.IdEmpleado ?? 0,
+                    Status = equipo.Status
                 };
-
-                return resultado.ToList();
             }
+            else
+            {
+                return new EquipoDto
+                {
+                    IdEquipo = equipo.IdEquipo,
+                    NumeroSerie = equipo.NumeroSerie,
+                    Etiqueta = equipo.Etiqueta,
+                    Marca = equipo.Marca,
+                    Modelo = equipo.Modelo,
+                    Ip = equipo.Ip,
+                    Ram = equipo.Ram,
+                    DiscoDuro = equipo.DiscoDuro,
+                    Procesador = equipo.Procesador,
+                    So = equipo.So,
+                    EquipoEstatus = equipo.EquipoEstatus,
+                    Empresa = equipo.Empresa,
+                    Renovar = equipo.Renovar,
+                    FechaUltimaCaptura = equipo.FechaUltimaCaptura,
+                    FechaUltimoMantto = equipo.FechaUltimoMantto,
+                    ElaboroResponsiva = equipo.ElaboroResponsiva,
+                    Zona =  "Sin Ubicación",
+                    NombreDepartamento =  "Sin Departamento",
+                    IdEmpleado = 0,
+                    Status = equipo.Status
+                };
+            }
+           
+        }
         public async Task<Equipo> GetEquipoById(int id)
         {
             AddJwtHeader();
@@ -96,6 +109,16 @@ namespace WebAppInventarioS.Services
                 throw new UnauthorizedAccessException();
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Equipo>();
+        }
+        public async Task<List<Equipo>> GetEquipoEmpleadoById(int id)
+        {
+            AddJwtHeader();
+            var response = await _httpClient.GetAsync($"api/Equipo/Empleado/{id}");
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                throw new UnauthorizedAccessException();
+            response.EnsureSuccessStatusCode();
+            var equipos = await response.Content.ReadFromJsonAsync<List<Equipo>>();
+            return equipos ?? new List<Equipo>();
         }
         public async Task<Equipo> CreateEquipo(Equipo equipo)
         {

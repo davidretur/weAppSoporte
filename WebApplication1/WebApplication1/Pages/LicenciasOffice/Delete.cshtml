@@ -1,0 +1,26 @@
+﻿@page
+@model WebAppSoporte.Pages.LicenciasOffice.DeleteModel
+@{
+	ViewData["Title"] = "Baja de Licencia";
+}
+<h1>Baja de Licencia</h1>
+<h3>¿Estás seguro de que deseas dar de baja o alta esta licencia?</h3>
+@if (Model.LicenciaOffice != null)
+{
+	<dl class="row">
+		<dt class="col-sm-2">Cuenta</dt>
+		<dd class="col-sm-10">@Model.LicenciaOffice.Cuenta</dd>
+		<dt class="col-sm-2">Equipo</dt>
+		<dd class="col-sm-10">@Model.LicenciaOffice.IdEquipo</dd>
+	</dl>
+	<form method="post">
+		<input type="hidden" asp-for="LicenciaOffice.IdLicencia" />
+		<button type="submit" class="btn btn-primary">Enviar</button>
+		<a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+	</form>
+}
+else
+{
+	<p>Licencia no encontrada</p>
+	<a asp-page="./Index" class="btn btn-primary">Volver a la lista</a>
+}

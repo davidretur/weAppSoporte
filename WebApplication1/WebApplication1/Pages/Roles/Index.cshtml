@@ -19,11 +19,27 @@
         {
             <tr>
                 <td>@rol.NombreRol</td>
-                <td>@rol.Status</td>
                 <td>
-                    <a asp-page="./Details" asp-route-id="@rol.IdRol">Detalles</a> |
-                    <a asp-page="./Edit" asp-route-id="@rol.IdRol">Editar</a> |
-                    <a asp-page="./Delete" asp-route-id="@rol.IdRol">Eliminar</a>
+                    @if (rol.Status)
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactivo</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-page="./Details" asp-route-id="@rol.IdRol">Detalles</a> 
+                    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@rol.IdRol">Editar</a>
+                    @if (!rol.Status)
+                    {
+                        <a class="btn btn-success" asp-page="./Delete" asp-route-id="@rol.IdRol">Alta</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@rol.IdRol">Baja</a>
+                    }
                 </td>
             </tr>
         }
@@ -31,6 +47,6 @@
 </table>
 
 <p>
-    <a asp-page="./Create">Crear Nuevo Rol</a>
+    <a class="btn  btn-primary" asp-page="./Create">Crear Nuevo Rol</a>
 </p>
 

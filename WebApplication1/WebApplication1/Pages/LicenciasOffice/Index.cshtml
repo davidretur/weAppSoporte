@@ -11,6 +11,7 @@
         <tr>
             <th>Cuenta</th>
             <th>Id Equipo</th>
+            <th>Status</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -21,9 +22,26 @@
                 <td>@licenciaOffice.Cuenta</td>
                 <td>@licenciaOffice.IdEquipo</td>
                 <td>
-                    <a asp-page="./Details" asp-route-id="@licenciaOffice.IdLicencia">Detalles</a> |
-                    <a asp-page="./Edit" asp-route-id="@licenciaOffice.IdLicencia">Editar</a> |
-                    <a asp-page="./Delete" asp-route-id="@licenciaOffice.IdLicencia">Eliminar</a>
+                    @if (licenciaOffice.Status)
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactivo</span>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-secondary" asp-page="./Details" asp-route-id="@licenciaOffice.IdLicencia">Detalles</a> 
+                    <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@licenciaOffice.IdLicencia">Editar</a>
+                    @if (!licenciaOffice.Status)
+                    {
+                        <a class="btn btn-success" asp-page="./Delete" asp-route-id="@licenciaOffice.IdLicencia">Alta</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@licenciaOffice.IdLicencia">Baja</a>
+                    }
                 </td>
             </tr>
         }
@@ -31,5 +49,5 @@
 </table>
 
 <p>
-    <a asp-page="./Create">Crear Nuevo Rol</a>
+    <a class="btn btn-primary" asp-page="./Create">Crear Nuevo Licencia</a>
 </p>

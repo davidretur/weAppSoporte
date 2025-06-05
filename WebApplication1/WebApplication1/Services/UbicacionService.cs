@@ -28,7 +28,7 @@ namespace WebAppInventarioS.Services
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<List<Ubicacion>>();
         }
-        public async Task<Ubicacion> GetUbicacionById(int id)
+        public async Task<Ubicacion> GetUbicacionById(int? id)
         {
             AddJwtHeader();
             var response = await _httpClient.GetAsync($"api/Ubicacion/{id}");

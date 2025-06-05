@@ -29,10 +29,17 @@ namespace WebAppInventarioS.Pages.Equipos
         {
             Ubicaciones = (await _ubicacionService.GetAllUbicaciones())
                 .Select(u => new SelectListItem { Value = u.IdUbicacion.ToString(), Text = u.Zona }).ToList();
+
             Departamentos = (await _departamentoService.GetAllDepartamentos())
                 .Select(d => new SelectListItem { Value = d.IdDepartamento.ToString(), Text = d.NombreDepartamento }).ToList();
+            // Agrega la opción "Sin Asignar" al inicio
+            Departamentos.Insert(0, new SelectListItem { Value = "0", Text = "Sin Asignar" });
+
             Empleados = (await _empleadoService.GetAllEmpleadosU())
-                .Select(e => new SelectListItem { Value = e.IdEmpleado.ToString(), Text = e.Nombre + " "+ e.ApellidoP + " " + e.ApellidoM }).ToList();
+                .Select(e => new SelectListItem { Value = e.IdEmpleado.ToString(), Text = e.Nombre + " " + e.ApellidoP + " " + e.ApellidoM }).ToList();
+            // Agrega la opción "Sin Asignar" al inicio
+            Empleados.Insert(0, new SelectListItem { Value = "0", Text = "Sin Asignar" });
+
             return Page();
         }
 

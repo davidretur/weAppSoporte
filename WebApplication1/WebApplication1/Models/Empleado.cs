@@ -40,6 +40,11 @@ namespace WebAppInventarioS.Models
 
         [Required]
         public int IdUbicacion { get; set; }
+
+        [Required]
+        public int IdEquipo { get; set; }
+        [Required]
+        public int IdLicencia { get; set; }
         public bool Status { get; set; } = true;
 
     }

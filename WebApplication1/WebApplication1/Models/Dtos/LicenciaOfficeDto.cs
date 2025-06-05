@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebAppInventarioS.Models
+namespace WebAppSoporte.Models.Dtos
 {
-    public class LicenciaOffice
+    public class LicenciaOfficeDto
     {
         public int IdLicencia { get; set; }
 
@@ -11,10 +11,7 @@ namespace WebAppInventarioS.Models
         public string Cuenta { get; set; }
 
         [Required]
-        public int IdEquipo { get; set; }
-        [Required]
-
-        public int IdEmpleado { get; set; }
+        public string NumeroSerie { get; set; }
         [Required]
         public bool Status { get; set; } = true;
     }

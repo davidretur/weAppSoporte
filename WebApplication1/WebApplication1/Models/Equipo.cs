@@ -48,16 +48,14 @@ namespace WebAppInventarioS.Models
         [Required]
         [StringLength(100)]
         public string ElaboroResponsiva { get; set; }
-        [Required]
-        public int IdUbicacion { get; set; }
 
-        [Required]
-        public int IdDepartamento { get; set; }
+        public int? IdUbicacion { get; set; }
 
 
-        [Required]
+        public int? IdDepartamento { get; set; }
 
-        public int IdEmpleado { get; set; }
+
+        public int? IdEmpleado { get; set; }
 
         public bool Status { get; set; }
 

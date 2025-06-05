@@ -1,0 +1,27 @@
+﻿@page
+@model WebAppSoporte.Pages.LicenciasOffice.EditModel
+@{
+	ViewData["Title"] = "Edit Licencia Office";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="licenciaOffice.IdLicencia" />
+    <div class="form-group">
+        <label asp-for="licenciaOffice.Cuenta"></label>
+        <input asp-for="licenciaOffice.Cuenta" class="form-control" />
+        <span asp-validation-for="licenciaOffice.Cuenta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="licenciaOffice.IdEquipo"></label>
+        <select asp-for="licenciaOffice.IdEquipo" class="form-control" asp-items="Model.Equipos">
+            <option value="">Seleccione un tipo de licencia</option>
+        </select>
+		<span asp-validation-for="licenciaOffice.IdEquipo" class="text-danger"></span>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

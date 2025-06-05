@@ -40,7 +40,7 @@ namespace WebAppInventarioS.Services
             return await response.Content.ReadFromJsonAsync<List<Departamento>>();
         }
 
-        public async Task<Departamento> GetDepartamentoByIdAsync(int id)
+        public async Task<Departamento> GetDepartamentoByIdAsync(int? id)
         {
             AddJwtHeader();
             var response = await _httpClient.GetAsync($"api/Departamento/{id}");

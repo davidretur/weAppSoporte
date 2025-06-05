@@ -28,57 +28,45 @@ namespace WebAppInventarioS.Pages.Equipos
 
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
-        public List<EquipoDto> Equipos { get; set; } = new List<EquipoDto>();
+        public EquipoDto? Equipo { get; set; }
         public List<EmpleadoDto> Empleados { get; set; } = new List<EmpleadoDto>();
         public List<LicenciaOfEqDto> Licencias { get; set; } = new List<LicenciaOfEqDto>();
 
         public async Task<IActionResult> OnGetAsync()
+{
+    try
+    {
+        Empleados = new List<EmpleadoDto>();
+        Licencias = new List<LicenciaOfEqDto>();
+
+        if (!string.IsNullOrWhiteSpace(SearchTerm))
         {
-            try
+            Equipo = await _equiposService.GetAllEquiposLink(
+                _departamentoService,
+                _ubicacionService,
+                SearchTerm);
+
+            if (Equipo.IdEmpleado != 0)
             {
-                Equipos = new List<EquipoDto>();
-                Empleados = new List<EmpleadoDto>();
-                Licencias = new List<LicenciaOfEqDto>();
+                var empleado = await _empleadoService.GetEmpleadoByIdEquipo(Equipo.IdEmpleado,
+                    _departamentoService,
+                    _ubicacionService);
+                if (empleado != null)
+                    Empleados.Add(empleado);
 
-                // Solo realiza la búsqueda si hay un término de búsqueda
-                if (!string.IsNullOrWhiteSpace(SearchTerm))
-                {
-                    var equipos = await _equiposService.GetAllEquiposLink(
-                        _departamentoService,
-                        _ubicacionService,
-                        SearchTerm);
-
-                    Equipos = equipos.Where(e =>
-                        (!string.IsNullOrEmpty(e.NumeroSerie) && e.NumeroSerie.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
-                        (!string.IsNullOrEmpty(e.Etiqueta) && e.Etiqueta.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)) ||
-                        (!string.IsNullOrEmpty(e.Modelo) && e.Modelo.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
-                    ).ToList();
-
-                    foreach (var equipo in Equipos)
-                    {
-                        var empleado = await _empleadoService.GetEmpleadoByIdEquipo(equipo.IdEquipo,
-                            _departamentoService,
-                            _ubicacionService);
-                        if (empleado != null)
-                            Empleados.Add(empleado);
-                    }
-
-                    foreach (var equipo in Equipos)
-                    {
-                        var licencia = await _licenciaService.GetLicenciaOfficeByEquipod(equipo.IdEquipo);
-                        if (licencia != null)
-                            Licencias.Add(licencia);
-                    }
-                }
-
-                return Page();
-            }
-            catch (UnauthorizedAccessException)
-            {
-                // Redirige a la página de login
-                return RedirectToPage("/Sesion/Login");
+                var licencia = await _licenciaService.GetLicenciaOfficeByEquipod(Equipo.IdEquipo);
+                if (licencia != null)
+                    Licencias.Add(licencia);
             }
         }
+
+        return Page();
+    }
+    catch (UnauthorizedAccessException)
+    {
+        return RedirectToPage("/Sesion/Login");
+    }
+}
 
     }
 }
